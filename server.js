@@ -25,7 +25,7 @@ app.post("/api/chat", async (req, res) => {
     res.json({ reply: completion.choices[0].message.content });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error con Groq" });
+    res.status(500).json({ error: "Error with Groq" });
   }
 });
 
