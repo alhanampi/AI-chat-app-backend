@@ -15,10 +15,8 @@ app.use(
     ],
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
-  })
+  }),
 );
-
-app.options("*", cors());
 
 app.use(express.json());
 
@@ -28,13 +26,11 @@ const client = new Groq({
 
 app.post("/api/chat", async (req, res) => {
   const { message } = req.body;
-
   try {
     const completion = await client.chat.completions.create({
       model: "llama-3.1-8b-instant",
       messages: [{ role: "user", content: message }],
     });
-
     res.json({ reply: completion.choices[0].message.content });
   } catch (error) {
     console.error(error);
