@@ -13,8 +13,12 @@ app.use(
       "http://localhost:5173",
       "https://ai-chat-app-flax-eight.vercel.app",
     ],
-  }),
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
 );
+
+app.options("*", cors());
 
 app.use(express.json());
 
