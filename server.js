@@ -24,6 +24,10 @@ const client = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
 
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 app.post("/api/chat", async (req, res) => {
   const { message } = req.body;
   try {
