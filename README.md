@@ -1,52 +1,11 @@
-# AI Chat App — Backend
+# AI Chat App — Backend (deprecated)
 
-Express API server that handles communication between the frontend and the Groq LLM API.
+> **This backend is no longer used.** The API was migrated to a Vercel Serverless Function (`api/chat.js`) in the frontend repo, eliminating the need for a separate Express server.
 
 Part of the [AI Chat App](https://github.com/alhanampi/AI-chat-app) project.
 
 ---
 
-## Stack
+## What changed
 
-| | |
-|---|---|
-| Node.js + Express 5 | HTTP server |
-| Groq SDK | LLM inference (Llama 3.1 8B Instant) |
-| dotenv | Environment variable management |
-| CORS | Cross-origin request handling |
-
----
-
-## Endpoint
-
-**POST** `/api/chat`
-
-```json
-// Request
-{ "message": "your message here" }
-
-// Response
-{ "reply": "AI response text" }
-```
-
----
-
-## Running Locally
-
-```bash
-npm install
-```
-
-Create a `.env` file:
-
-```
-GROQ_API_KEY=your_key_here
-```
-
-Get a free API key at [console.groq.com](https://console.groq.com).
-
-```bash
-node server.js
-```
-
-Server runs on `http://localhost:3001`.
+The `/api/chat` endpoint now lives in the frontend repo as `api/chat.js`, handled natively by Vercel. The Groq SDK is called directly from that serverless function using the `GROQ_API_KEY` environment variable set in Vercel.
